@@ -2,4 +2,4 @@
 
 ## Finally after so many years of the suffering installing process
 
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fridakitten/Procursus-Installer-MacOS/main/strap.sh)"`
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/emexlab/procursus-macos/main/strap.sh)"`

@@ -9,25 +9,25 @@ if [ -d /opt/procursus ]; then
 fi
 
 # creating tmp folder
-if [ -d tmp ]; then
-    rm -rf tmp
+if [ -d ~/protmp ]; then
+    rm -rf ~/protmp 
 fi
-mkdir tmp
+mkdir ~/protmp
 
 # cloning and making zstd
 git clone https://github.com/facebook/zstd.git
-mv zstd tmp/zstd
-make -j4 -C tmp/zstd
+mv zstd ~/protmp/zstd
+make -j4 -C ~/protmp/zstd
 
 # downloading procursus
 curl -O https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-arm64.tar.zst
-mv bootstrap-darwin-arm64.tar.zst tmp/bootstrap.tar.zst
+mv bootstrap-darwin-arm64.tar.zst ~/protmp/bootstrap.tar.zst
 
 # uncompressing bootstrap into raw tar
-tmp/zstd/zstd -d tmp/bootstrap.tar.zst
+~/protmp/zstd/zstd -d ~/protmp/bootstrap.tar.zst
 
 # uncompress bootstrap initially
-sudo tar -xpf tmp/bootstrap.tar -C /
+sudo tar -xpf ~/protmp/bootstrap.tar -C /
 
 # exporting path
 export PATH=$PATH:/opt/procursus/bin
@@ -39,7 +39,5 @@ sudo apt-get install sileo -y
 echo "export PATH=$PATH:/opt/procursus/bin" > $HOME/.zshrc
 
 # launching sileo
-/opt/procursus/Applications/Sileo.app/Contents/MacOS/Sileo& > /dev/null 2>&1
-disown
-
-killall Terminal
+open /opt/procursus/Applications/Sileo.app
+rm -rf ~/protmp
