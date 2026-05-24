@@ -21,7 +21,7 @@ make -j4 -C tmp/zstd
 
 # downloading procursus
 curl -O https://apt.procurs.us/bootstraps/big_sur/bootstrap-darwin-arm64.tar.zst
-mv bootstrap-darwin-amd64.tar.zst tmp/bootstrap.tar.zst
+mv bootstrap-darwin-arm64.tar.zst tmp/bootstrap.tar.zst
 
 # uncompressing bootstrap into raw tar
 tmp/zstd/zstd -d tmp/bootstrap.tar.zst
